@@ -13,7 +13,8 @@
             "group": {
               "kind": "build",
               "isDefault": true
-            }
+            },
+            "dependsOn": "Create bin folder"
         },
         {
             "type": "shell",
@@ -24,6 +25,17 @@
               "isDefault": true
             },
             "dependsOn": "g++.exe build"
+        },
+        {
+            "type": "shell",
+            "label": "Create bin folder",
+            "command": "mkdir -Force bin",
+            "group": "none"
+        },
+        {
+            "type": "shell",
+            "label": "clean",
+            "command": "rm -Recurse bin"
         }
     ]
 }
