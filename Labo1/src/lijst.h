@@ -114,6 +114,7 @@ public:
 
     //iterator; gaat ervan uit dat alles const is
     public: class iterator{
+            Lijstknoop<T> *next;
         public:
             iterator(Lijstknoop<T>* l=0);
             const T& operator*() const;
@@ -122,8 +123,9 @@ public:
     };
     iterator begin() const;
     iterator end() const;
-
 };
+
+
 
 //copy constructor
 template<class T>
@@ -171,6 +173,35 @@ Lijst<T>& Lijst<T>::operator=(Lijst<T> &&l) {
     this->swap(l);
     l.reset();
     return *this;
+}
+
+template<class T>
+typename Lijst<T>::iterator Lijst<T>::begin() const {
+    return Lijst<T>::iterator(this->get());
+}
+
+template<class T>
+typename Lijst<T>::iterator Lijst<T>::end() const {
+    return Lijst<T>::iterator();
+}
+
+template<class T>
+Lijst<T>::iterator::iterator(Lijstknoop<T> *l) : next(l) {}
+
+template<class T>
+const T& Lijst<T>::iterator::operator*() const {
+    return next->sleutel;
+}
+
+template<class T>
+const typename Lijst<T>::iterator& Lijst<T>::iterator::operator++() {
+    this->next = next->volgend.get();
+    return *this;
+}
+
+template<class T>
+bool Lijst<T>::iterator::operator!=(const Lijst<T>::iterator& i) {
+    return next == i.next;
 }
 
 template<class T>
