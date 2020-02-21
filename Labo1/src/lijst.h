@@ -40,17 +40,20 @@ public:
     using std::unique_ptr<Lijstknoop<T>>::swap;
 
     // ToDo: 
-    // - Add default constructor
-    // - Add copy constructor
-    // - Add move constructor
-    // - Add copy assignment 
-    // - Add move assignment
-    // - Add destructor
+    // - Add default constructor OK
+    // - Add copy constructor OK
+    // - Add move constructor OK
+    // - Add copy assignment  OK
+    // - Add move assignment OK
+    // - Add destructor OK
 
     //operaties
 
     //default constructor
     public: Lijst() = default;
+
+    //destructor
+    public: ~Lijst()=  default;
 
     //copy constructor
     //passed by L-ref-value
@@ -126,20 +129,6 @@ public:
 template<class T>
 Lijst<T>::Lijst(const Lijst<T> &l) {
     std::cerr << "copy constructor called\n";
-}
-
-//move constructor
-template<class T>
-Lijst<T>::Lijst(Lijst<T> &&l) {
-    std::cerr << "move constructor called\n";
-    this->swap(l);
-    l.reset();
-}
-
-//copy assign operator
-template<class T>
-Lijst<T>& Lijst<T>::operator=(const Lijst<T> &l) {
-    std::cerr << "copy operator= called\n";
     this->reset();
     Lijstknoop<T> *kn=l.get();
     if (kn!=0){
@@ -154,6 +143,23 @@ Lijst<T>& Lijst<T>::operator=(const Lijst<T> &l) {
         laatste = laatste->volgend.get();
         kn=kn->volgend.get();
     };
+}
+
+//move constructor
+template<class T>
+Lijst<T>::Lijst(Lijst<T> &&l) {
+    std::cerr << "move constructor called\n";
+    this->swap(l);
+    l.reset();
+}
+
+//copy assign operator
+template<class T>
+Lijst<T>& Lijst<T>::operator=(const Lijst<T> &l) {
+    if(*this==l) return *this;
+    std::cerr << "copy operator= called\n";
+    Lijst<T> temp = Lijst<T>(l);
+    *this = std::move(temp);
     return *this;
 }
 
@@ -161,6 +167,7 @@ Lijst<T>& Lijst<T>::operator=(const Lijst<T> &l) {
 template<class T>
 Lijst<T>& Lijst<T>::operator=(Lijst<T> &&l) {
     std::cerr << "move operator= called\n";
+    if(*this==l) return *this;
     this->swap(l);
     l.reset();
     return *this;

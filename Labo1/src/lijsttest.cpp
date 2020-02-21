@@ -71,9 +71,7 @@ int main()
         verwijderd += 7;
         Lijstknoop<int>::controle(gemaakt, verwijderd);
 
-        throw("copy levert andere lijst op.");
-
-/*        std::cerr << "duplicaat 3\n";
+        std::cerr << "duplicaat 3\n";
         l2 = l2;
         Lijstknoop<int>::controle(gemaakt, verwijderd);
         l2.schrijf(std::cerr);
@@ -120,8 +118,8 @@ int main()
     verwijderd += 7;
     Lijstknoop<int>::controle(gemaakt, verwijderd);
 
-    std::cout << "OK\n";
-
+    std::cout << "OK BOOMER\n";
+/*
     //iterator 
     for (auto s : l)
     {
@@ -130,6 +128,5 @@ int main()
     l.schrijf(std::cerr);
     std::cerr << "\n";
 */
-    }
     return 0;
 }
