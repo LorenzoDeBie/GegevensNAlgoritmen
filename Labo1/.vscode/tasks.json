@@ -3,9 +3,24 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "g++.exe build",
+            "label": "g++ exe build",
             "command": "g++",
             "args": ["-g", "src\\*.cpp", "-o", "bin\\main.exe", "-std=c++17"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+              "kind": "build",
+              "isDefault": true
+            },
+            "dependsOn": "Create bin folder ps2"
+        },
+        {
+            "type": "shell",
+            "label": "g++ build",
+            "command": "g++",
+            "args": ["-g", "src/*.cpp", "-o", "bin/main", "-std=c++17"],
             "options": {
                 "cwd": "${workspaceFolder}"
             },
@@ -18,24 +33,45 @@
         },
         {
             "type": "shell",
-            "label": "g++.exe build & run",
+            "label": "g++ exe build & run",
             "command": "${cwd}\\bin\\main.exe",
             "group": {
               "kind": "test",
               "isDefault": true
             },
-            "dependsOn": "g++.exe build"
+            "dependsOn": "g++ exe build"
         },
         {
             "type": "shell",
-            "label": "Create bin folder",
+            "label": "g++ build & run",
+            "command": "${cwd}/bin/main",
+            "group": {
+              "kind": "test",
+              "isDefault": true
+            },
+            "dependsOn": "g++ build"
+        },
+        {
+            "type": "shell",
+            "label": "Create bin folder ps2",
             "command": "mkdir -Force bin",
             "group": "none"
         },
         {
             "type": "shell",
-            "label": "clean",
+            "label": "Create bin folder",
+            "command": "mkdir -p bin",
+            "group": "none"
+        },
+        {
+            "type": "shell",
+            "label": "clean ps2",
             "command": "rm -Recurse bin"
+        },
+        {
+            "type": "shell",
+            "label": "clean",
+            "command": "rm -rf bin"
         }
     ]
 }
