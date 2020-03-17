@@ -10,6 +10,7 @@
 
 //Sorting algorithms
 #include "../insertion_sort/insertion_sort.cpp"
+#include "../shell_sort/shell_sort.cpp"
 
 using namespace std;
 
@@ -26,6 +27,8 @@ void test_sorts() {
     map<string, function<void (vector<int>&)>> sorters;
     sorters.insert(make_pair("insertion_sort_asc", insertion_sort_stable_asc<int>));
     sorters.insert(make_pair("insertion_sort_desc", insertion_sort_stable_desc<int>));
+    sorters.insert(make_pair("shell_sort_asc", shell_sort_asc<int>));
+    sorters.insert(make_pair("shell_sort_desc", shell_sort_desc<int>));
 
     for(auto &sorter : sorters) {
         vector<int> lijst = create_test_vector();
