@@ -1,7 +1,6 @@
 #include <iostream>
 #include <memory>
 #include <functional>
-#include <map>
 #include <vector>
 #include <utility>
 #include <cstdlib>
@@ -11,6 +10,7 @@
 //Sorting algorithms
 #include "../insertion_sort/insertion_sort.cpp"
 #include "../shell_sort/shell_sort.cpp"
+#include "../selection_sort/selection_sort.cpp"
 
 using namespace std;
 
@@ -24,11 +24,13 @@ vector<int> create_test_vector(int size = 10, int min = 0, int max = 100) {
 }
 
 void test_sorts() {
-    map<string, function<void (vector<int>&)>> sorters;
-    sorters.insert(make_pair("insertion_sort_asc", insertion_sort_stable_asc<int>));
-    sorters.insert(make_pair("insertion_sort_desc", insertion_sort_stable_desc<int>));
-    sorters.insert(make_pair("shell_sort_asc", shell_sort_asc<int>));
-    sorters.insert(make_pair("shell_sort_desc", shell_sort_desc<int>));
+    vector<pair<string, function<void (vector<int>&)>>> sorters;
+    sorters.push_back(make_pair("insertion_sort_asc", insertion_sort_stable_asc<int>));
+    sorters.push_back(make_pair("insertion_sort_desc", insertion_sort_stable_desc<int>));
+    sorters.push_back(make_pair("shell_sort_asc", shell_sort_asc<int>));
+    sorters.push_back(make_pair("shell_sort_desc", shell_sort_desc<int>));
+    sorters.push_back(make_pair("selection_sort_asc", selection_sort_asc<int>));
+    sorters.push_back(make_pair("selection_sort_desc", selection_sort_desc<int>));
 
     for(auto &sorter : sorters) {
         vector<int> lijst = create_test_vector();
@@ -49,6 +51,5 @@ void test_sorts() {
 int main(int argc, char** argv) {
     srand(SEED);
     test_sorts();
-
     return 0;
 }
