@@ -5,7 +5,7 @@
 #include <utility>
 #include <cstdlib>
 
-#define SEED 0
+#define SEED time(0)
 
 //Sorting algorithms
 #include "../insertion_sort/insertion_sort.hpp"

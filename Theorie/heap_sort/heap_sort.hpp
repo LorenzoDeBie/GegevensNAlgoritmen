@@ -24,7 +24,12 @@ void create_max_heap(std::vector<T> &list, int size) {
 }
 
 template<class T>
-void swap_root_element(std::vector<T> &list, int size, int n) {
+void swap_root_element(std::vector<T> &list, int size, T n) {
+    //heap condition cannot be broken if the new element is bigger than the now biggest element
+    if(n >= list[0]) {
+        std::swap(list[0], n);
+        return;
+    }
     list[0] = n;
     int current = 0;
     //set this to current for entering while loop
