@@ -28,3 +28,5 @@ add_executable(heap_sort src/heap_sort/heapsort)
 target_link_libraries(insertion_sort LINK_PUBLIC Chrono)
 target_link_libraries(insertion_sort LINK_PUBLIC Csv)
 
+add_executable(binary_search src/binary_search/binarysearch)
+

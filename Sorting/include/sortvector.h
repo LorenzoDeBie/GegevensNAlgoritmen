@@ -17,6 +17,7 @@
 #include <random>
 #include <functional>
     using std::function;
+#include <cassert>
 
 template<class T>
 class Sortvector:public vector<T>{

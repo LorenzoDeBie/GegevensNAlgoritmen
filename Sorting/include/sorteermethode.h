@@ -8,6 +8,7 @@
     using std::cout;
 #include <algorithm>   // voor sort()-methode uit STL
 #include "chrono.h"
+#include "csv.h"
 
 /** class Sorteermethode
     \brief abstracte klasse van methodes die een vector sorteren
@@ -32,6 +33,9 @@ class Sorteermethode{
 ///    T a=5;
 /// geldig is.
 	void meet(int kortste, int langste, std::ostream& os, CsvData& csv) const;
+
+	void test(int length) const;
+	void debug() const;
 };
 
 template <typename T>
@@ -89,4 +93,53 @@ void Sorteermethode<T>::meet(int kortste, int langste, std::ostream& os, CsvData
     }
 }
 
-#endif 
+template<typename T>
+void Sorteermethode<T>::test(int length) const {
+    Sortvector<T> data(length);
+
+    //test with random permutation
+    data.fill_random();
+    std::cout << data << std::endl;
+    (*this)(data);
+    std::cout << data << std::endl;
+    if(!data.is_sorted()) {
+        std::cerr << "Failed to sort random vector" << std::endl;
+        exit(1);
+    }
+
+    //test with already sorted vector
+    data.fill_range();
+    std::cout << data << std::endl;
+    (*this)(data);
+    std::cout << data << std::endl;
+    if(!data.is_sorted()) {
+        std::cerr << "Failed to sort sorted vector" << std::endl;
+        exit(1);
+    }
+
+    //test with reversed vector
+    data.fill_reverse();
+    std::cout << data << std::endl;
+    (*this)(data);
+    std::cout << data << std::endl;
+    if(!data.is_sorted()) {
+        std::cerr << "Failed to sort reverse sorted vector" << std::endl;
+        exit(1);
+    }
+
+    std::cout << "OK" << std::endl;
+}
+
+template<typename T>
+void Sorteermethode<T>::debug() const {
+    Sortvector<int> data{1,5,4,2,3};
+    //sort the debug vector
+    (*this)(data);
+    if(!data.is_sorted()) {
+        std::cerr << "Failed to sort vector!" << std::endl;
+        exit(1);
+    }
+    std::cout << "OK" << std::endl;
+}
+
+#endif
