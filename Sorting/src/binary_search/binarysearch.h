@@ -1,0 +1,8 @@
+//
+// Created by lorenzodb on 21/04/2020.
+//
+
+#ifndef CLIONTEST_BINARYSEARCH_H
+#define CLIONTEST_BINARYSEARCH_H
+
+#endif //CLIONTEST_BINARYSEARCH_H
