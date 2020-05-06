@@ -2,8 +2,8 @@
 // Created by lorenzodb on 06/04/2020.
 //
 
-#ifndef CLIONTEST_QUICKSORT_H
-#define CLIONTEST_QUICKSORT_H
+#ifndef SORTING_QUICKSORT_H
+#define SORTING_QUICKSORT_H
 
 #include <sorteermethode.h>
 
@@ -64,4 +64,4 @@ void QuickSort<T>::operator()(vector<T> &v) const {
 }
 
 
-#endif //CLIONTEST_QUICKSORT_H
+#endif //SORTING_QUICKSORT_H

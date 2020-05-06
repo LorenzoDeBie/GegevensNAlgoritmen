@@ -1,5 +1,5 @@
-#ifndef SHELLSORT_H
-#define SHELLSORT_H
+#ifndef SORTING_SHELLSORT_H
+#define SORTING_SHELLSORT_H
 
 #include "sorteermethode.h"
 #include <iostream>
@@ -27,5 +27,5 @@ class ShellSort: public Sorteermethode<T> {
     }
 };
 
-#endif
+#endif // SORTING_SHELLSORT_H
 

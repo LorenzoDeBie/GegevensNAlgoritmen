@@ -1,5 +1,6 @@
 #include "csv.h"
 #include "intstring.h"
+#include "heap.h"
 #include "heapsort.h"
 
 #include <array>
@@ -60,8 +61,17 @@ void debug_sort(Sorteermethode<int>& sort) {
 
 int main()
 {
-    <int> test;
+    /*HeapSort<int> test;
     //test one algorithm with a given type
     test_sort(test);
+    */
+
+    int arr[] = {5, 8, 6, 20, 3, 54, 1, 9, 8};
+    Heap<int> heap(arr);
+
+    heap.insert(21);
+    heap.insert(3);
+    heap.insert(0);
+
     return 0;
 }

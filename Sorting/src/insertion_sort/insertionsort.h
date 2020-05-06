@@ -1,5 +1,5 @@
-#ifndef INSERTIONSORT_H
-#define INSERTIONSORT_H
+#ifndef SORTING_INSERTIONSORT_H
+#define SORTING_INSERTIONSORT_H
 
 #include "sorteermethode.h"
 #include <vector>
@@ -27,5 +27,5 @@ class InsertionSort: public Sorteermethode<T> {
     }
 };
 
-#endif
+#endif // SORTING_INSERTIONSORT_H
 

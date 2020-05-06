@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SORTING_MERGESORT_H
+#define SORTING_MERGESORT_H
 
 #include "sorteermethode.h"
 #include <vector>
@@ -67,3 +68,4 @@ void MergeSort<T>::merge(vector<T> &v, int start, int mid, int size, vector<T> &
     std::move(h.begin() + start, h.begin() + start + size, v.begin() + start);
 }
 
+#endif // SORTING_MERGESORT_H
